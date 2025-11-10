@@ -2,10 +2,10 @@
    CSS Custom Properties (Variables)
    =================================== */
 :root {
-    /* Colors - Sage Green & Warm Neutrals Palette */
-    --color-primary: #6B8E6F;        /* Sage green */
-    --color-primary-light: #8FA693;  /* Light sage */
-    --color-primary-dark: #4A6B4E;   /* Dark sage */
+    /* Colors - Light Blue & Warm Neutrals Palette */
+    --color-primary: #A3D2DB;        /* Light blue */
+    --color-primary-light: #C1E5ED;  /* Lighter blue */
+    --color-primary-dark: #7BB5C1;   /* Dark blue */
     --color-accent: #E8836C;         /* Coral accent */
     --color-accent-light: #F5A491;   /* Light coral */
     --color-neutral-light: #FAFAF8;  /* Cream white */
@@ -263,6 +263,8 @@ ul {
     align-items: center;
     justify-content: center;
     box-shadow: 0 10px 30px var(--color-shadow);
+    overflow: hidden;
+    position: relative;
 }
 
 .image-placeholder svg {
@@ -272,10 +274,12 @@ ul {
 }
 
 .image-placeholder img {
-    width: 100%;
-    height: 100%;
+    width: 120%;
+    height: 120%;
     border-radius: 50%;
     object-fit: cover;
+    object-position: 35% center;
+    position: absolute;
 }
 
 /* ===================================
