@@ -78,7 +78,7 @@ Replace the placeholder image icon:
 ```html
 <!-- Before (placeholder): -->
 <div class="image-placeholder">
-    <svg xmlns="http://www.w3.org/2000/svg" ...>
+    <svg xmlns="https://www.w3.org/2000/svg" ...>
     </svg>
 </div>
 
