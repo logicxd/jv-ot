@@ -1,3 +1,7 @@
+# jv-ot
+
+https://logicxd.github.io/jv-ot/
+
 # Occupational Therapist Profile Website
 
 A clean, modern, and responsive personal profile website for occupational therapy professionals. Built with vanilla HTML and CSS, optimized for GitHub Pages hosting.
