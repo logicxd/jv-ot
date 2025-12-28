@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Payment successful - Thank you for your payment">
+    <title>Payment Successful - Jessica Valenzuela, OTR/L</title>
+    <link rel="icon" type="image/jpg" href="../media/tab-icon.jpg">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-content">
+                <a href="../index.html#home" class="nav-logo">Jessica Valenzuela</a>
+                <ul class="nav-links">
+                    <li><a href="../index.html#about">About</a></li>
+                    <li><a href="../index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Success Page Content -->
+    <section class="checkout-page">
+        <div class="container">
+            <div class="checkout-content">
+                <!-- Success Icon -->
+                <div class="status-icon success">
+                    <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+
+                <!-- Success Message -->
+                <div class="status-message">
+                    <h1>Payment Successful!</h1>
+                    <p>Thank you so much! Your payment is processing!</p>
+                </div>
+
+                <!-- Payment Details Card -->
+                <div class="detail-card" id="paymentDetails">
+                    <h3>Payment Details</h3>
+                    <div class="detail-item">
+                        <span class="detail-label">Invoice Number:</span>
+                        <span class="detail-value" id="invoiceNumber">Loading...</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Amount:</span>
+                        <span class="detail-value" id="amount">Loading...</span>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="checkout-actions">
+                    <a href="../index.html" class="btn btn-primary">Return to Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Jessica Valenzuela, OTR/L. All rights reserved.</p>
+                <p class="footer-note">Licensed Occupational Therapist | Committed to client privacy and HIPAA compliance</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Parse URL query parameters
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            return {
+                invoiceNumber: params.get('invoice_number'),
+                amount: params.get('amount')
+            };
+        }
+
+        // Format amount (assuming cents format from Stripe)
+        function formatAmount(cents) {
+            if (!cents) return 'N/A';
+            const dollars = (parseInt(cents) / 100).toFixed(2);
+            return `$${dollars}`;
+        }
+
+        // Display payment details
+        function displayPaymentDetails() {
+            const params = getQueryParams();
+            const invoiceNumberElement = document.getElementById('invoiceNumber');
+            const amountElement = document.getElementById('amount');
+            const detailsCard = document.getElementById('paymentDetails');
+
+            if (params.invoiceNumber || params.amount) {
+                // Display invoice number
+                invoiceNumberElement.textContent = params.invoiceNumber || 'N/A';
+
+                // Display amount
+                amountElement.textContent = formatAmount(params.amount);
+            } else {
+                // Hide details card if no parameters provided
+                detailsCard.style.display = 'none';
+            }
+        }
+
+        // Run on page load
+        window.addEventListener('DOMContentLoaded', displayPaymentDetails);
+    </script>
+</body>
+</html>
